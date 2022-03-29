@@ -1,16 +1,16 @@
 package com.example.animania
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.sohail.animez.databinding.ActivityMainBinding
-import com.sohail.animez.service.AnimeService
+import com.example.animania.databinding.ActivityMainBinding
+import com.example.animania.service.AnimeService
 import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback

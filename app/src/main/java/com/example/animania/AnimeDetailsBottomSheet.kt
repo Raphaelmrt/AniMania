@@ -1,6 +1,5 @@
 package com.example.animania
 
-import android.app.Activity
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,9 +12,9 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 
-class AnimeDetailsBottomSheet (
+class AnimeDetailsBottomSheet(
     private val anime: Result
-): BottomSheetDialogFragment(){
+) : BottomSheetDialogFragment() {
 
     lateinit var binding: AnimeDetailsBottomSheetLayoutBinding
 
@@ -39,13 +38,13 @@ class AnimeDetailsBottomSheet (
             episodes.text = "${anime.episodes} episodes"
             synopsis.text = anime.synopsis
 
-            dates.text = if(anime.endDate.isEmpty()){
+            dates.text = if (anime.endDate.isEmpty()) {
                 "${formatDate(anime.startDate)} - ongoing"
             } else {
                 "${formatDate(anime.startDate)} - ${formatDate(anime.endDate)}"
             }
 
-            EnSavoirPlus.setOnClickListener{
+            EnSavoirPlus.setOnClickListener {
                 openCustomTab(activity as AppCompatActivity, Uri.parse(anime.url))
             }
         }
@@ -59,7 +58,7 @@ class AnimeDetailsBottomSheet (
 
     private fun formatDate(date: String): String {
         return if (date.contains("-")) {
-            val newDate = date.substring(8,date.lastIndexOf("-"))
+            val newDate = date.substring(0, date.lastIndexOf("-"))
             val _date = SimpleDateFormat("yyyy-MM").parse(newDate)
             SimpleDateFormat("MMM yyyy").format(_date)
         } else {

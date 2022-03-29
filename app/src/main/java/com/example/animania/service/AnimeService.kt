@@ -1,4 +1,4 @@
-package com.sohail.animez.service
+package com.example.animania.service
 
 import com.example.animania.SearchedAnime
 import com.example.animania.TopAnime
