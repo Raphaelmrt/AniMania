@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.animania.databinding.ActivityMainBinding
+import com.sohail.animez.databinding.ActivityMainBinding
 import com.sohail.animez.service.AnimeService
 import com.squareup.picasso.Picasso
 import retrofit2.Call
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
             call.enqueue(object : Callback<TopAnime> {
 
                 override fun onResponse(call: Call<TopAnime>, response: Response<TopAnime>) {
-                    if (response.body() !=  null) {
+                    if (response.body() != null) {
                         val top = response.body()!!.top
                         animeRecyclerView.adapter = AnimeAdapter(this@MainActivity,top)
                         animeRecyclerView.layoutManager = GridLayoutManager(this@MainActivity,3)
@@ -91,8 +91,13 @@ class MainActivity : AppCompatActivity() {
 
             name.text = anime.title
             Picasso.get().load(anime.imageUrl).into(image)
-            }
 
+            view.setOnClickListener {
+                AnimeDetailsBottomSheet(anime).apply {
+                    show(parentActivity.supportFragmentManager,"AnimeDetailsBottomSheet")
+                }
+            }
+        }
 
         override fun getItemCount(): Int {
             return animes.size
